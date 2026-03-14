@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { CodeBlock, CodeBlockContent } from "@/components/ui/code-block";
+import { CodeBlock } from "@/components/ui/code-block";
 import { Toggle } from "@/components/ui/toggle";
 
 const EXAMPLE_CODE = `function calculateTotal(items) {
@@ -23,21 +23,13 @@ const leaderboardEntries = [
   {
     rank: 1,
     score: 1.2,
-    lines: [
-      'eval(prompt("enter code"))',
-      "document.write(response)",
-      "// trust the user lol",
-    ],
+    lines: ['eval(prompt("enter code"))', "document.write(response)", "// trust the user lol"],
     language: "javascript",
   },
   {
     rank: 2,
     score: 1.8,
-    lines: [
-      "if (x == true) { return true; }",
-      "else if (x == false) { return false; }",
-      "else { return !false; }",
-    ],
+    lines: ["if (x == true) { return true; }", "else if (x == false) { return false; }", "else { return !false; }"],
     language: "typescript",
   },
   {
@@ -61,25 +53,19 @@ export default function Home() {
         <div className="flex flex-col gap-3">
           <h1 className="text-[36px] font-bold font-mono leading-tight text-center">
             <span className="text-accent-green">$ </span>
-            <span className="text-foreground">
-              paste your code. get roasted.
-            </span>
+            <span className="text-foreground">paste your code. get roasted.</span>
           </h1>
           <p className="text-center font-mono text-sm text-zinc-500 dark:text-zinc-400">{`// drop your code below and we'll rate it — brutally honest or full roast mode`}</p>
         </div>
 
-        <CodeBlock>
-          <CodeBlockContent language="javascript">
-            {EXAMPLE_CODE}
-          </CodeBlockContent>
-        </CodeBlock>
+        <CodeBlock.Root>
+          <CodeBlock.Content language="javascript">{EXAMPLE_CODE}</CodeBlock.Content>
+        </CodeBlock.Root>
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Toggle />
-            <span className="font-mono text-sm text-accent-green">
-              roast mode
-            </span>
+            <span className="font-mono text-sm text-accent-green">roast mode</span>
             <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">{`// maximum sarcasm enabled`}</span>
           </div>
           <Button radius="none">
@@ -88,13 +74,9 @@ export default function Home() {
         </div>
 
         <div className="flex items-center justify-center gap-6">
-          <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
-            2,847 codes roasted
-          </span>
+          <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">2,847 codes roasted</span>
           <span className="text-zinc-500 dark:text-zinc-400">·</span>
-          <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
-            avg score: 4.2/10
-          </span>
+          <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">avg score: 4.2/10</span>
         </div>
 
         <div className="flex flex-col gap-12">
@@ -112,59 +94,31 @@ export default function Home() {
 
           <div className="border border-border-primary w-full">
             <div className="flex items-center h-10 px-5 bg-bg-surface border-b border-border-primary">
-              <span className="w-12 font-mono text-xs font-medium text-text-tertiary">
-                #
-              </span>
-              <span className="w-18 font-mono text-xs font-medium text-text-tertiary">
-                score
-              </span>
-              <span className="flex-1 font-mono text-xs font-medium text-text-tertiary">
-                code
-              </span>
-              <span className="w-24 font-mono text-xs font-medium text-text-tertiary text-right">
-                lang
-              </span>
+              <span className="w-12 font-mono text-xs font-medium text-text-tertiary">#</span>
+              <span className="w-18 font-mono text-xs font-medium text-text-tertiary">score</span>
+              <span className="flex-1 font-mono text-xs font-medium text-text-tertiary">code</span>
+              <span className="w-24 font-mono text-xs font-medium text-text-tertiary text-right">lang</span>
             </div>
 
             {leaderboardEntries.map((entry, index) => (
-              <div
-                key={entry.rank}
-                className={`flex px-5 py-4 ${index < leaderboardEntries.length - 1 ? "border-b border-border-primary" : ""}`}
-              >
-                <span
-                  className={`w-12 font-mono text-xs ${entry.rank === 1 ? "text-accent-amber" : "text-text-secondary"}`}
-                >
-                  {entry.rank}
-                </span>
-                <span
-                  className={`w-18 font-mono text-xs font-bold ${scoreColor(entry.score)}`}
-                >
-                  {entry.score.toFixed(1)}
-                </span>
+              <div key={entry.rank} className={`flex px-5 py-4 ${index < leaderboardEntries.length - 1 ? "border-b border-border-primary" : ""}`}>
+                <span className={`w-12 font-mono text-xs ${entry.rank === 1 ? "text-accent-amber" : "text-text-secondary"}`}>{entry.rank}</span>
+                <span className={`w-18 font-mono text-xs font-bold ${scoreColor(entry.score)}`}>{entry.score.toFixed(1)}</span>
                 <div className="flex-1 flex flex-col gap-0.5">
                   {entry.lines.map((line) => (
-                    <span
-                      key={line}
-                      className={`font-mono text-xs ${line.startsWith("//") || line.startsWith("--") ? "text-text-tertiary" : "text-text-primary"}`}
-                    >
+                    <span key={line} className={`font-mono text-xs ${line.startsWith("//") || line.startsWith("--") ? "text-text-tertiary" : "text-text-primary"}`}>
                       {line}
                     </span>
                   ))}
                 </div>
-                <span className="w-24 font-mono text-xs text-text-secondary text-right">
-                  {entry.language}
-                </span>
+                <span className="w-24 font-mono text-xs text-text-secondary text-right">{entry.language}</span>
               </div>
             ))}
           </div>
 
           <div className="flex items-center justify-center gap-2 py-4">
-            <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
-              showing top 3 of 2,847
-            </span>
-            <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
-              ·
-            </span>
+            <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">showing top 3 of 2,847</span>
+            <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">·</span>
             <Button variant="link" size="sm" className="p-0 text-xs">
               view full leaderboard &gt;&gt;
             </Button>
