@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DevRoast
 
-## Getting Started
+Um app que analisa seu código e gera reviews brutalmente honestos. Rode seu código, receba a nota e compare com os piores códigos da internet no leaderboard.
 
-First, run the development server:
+## O que é o DevRoast?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+DevRoast é uma ferramenta de análise de código que evaluationa a qualidade do seu código e fornece feedback — dito de forma direta e sem rodeios. O objetivo é ajudar desenvolvedores a refletir sobre suas práticas de código de uma forma leve e bem-humorada.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Funcionalidades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Análise de Código** - Cole seu código e receba uma avaliação
+- **Modo Sarcaso** - Ative o modo roast para feedback ainda mais humorous
+- **Shame Leaderboard** - Veja os piores códigos enviados, ranqueados por vergonha
+- **Estatísticas Globais** - Acompanhe quantos códigos já foram analizados e a média de notas
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Como usar
 
-## Learn More
+1. Acesse o app
+2. Cole seu código na área de entrada
+3. (Opcional) Ative o modo roast para sarcasm mode
+4. Clique em "roast_my_code"
+5. Receba sua nota e veja no leaderboard
 
-To learn more about Next.js, take a look at the following resources:
+## Feito com
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Este projeto foi desenvolvido durante o **NLW (Next Level Week)** da [Rocketseat](https://rocketseat.com.br), um dos maiores eventos de programação do Brasil.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Disclaimer**: DevRoast é uma ferramenta leve e divertida. O feedback gerado é automático e não substitui code reviews profissionais.
