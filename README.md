@@ -1,30 +1,61 @@
 # DevRoast
 
-Um app que analisa seu código e gera reviews brutalmente honestos. Rode seu código, receba a nota e compare com os piores códigos da internet no leaderboard.
+An app that analyzes your code and delivers brutally honest reviews. Run your code, get your score, and compare with the worst codes on the internet in the leaderboard.
 
-## O que é o DevRoast?
+## What is DevRoast?
 
-DevRoast é uma ferramenta de análise de código que evaluationa a qualidade do seu código e fornece feedback — dito de forma direta e sem rodeios. O objetivo é ajudar desenvolvedores a refletir sobre suas práticas de código de uma forma leve e bem-humorada.
+DevRoast is a code analysis tool that evaluates your code quality and provides feedback — straight to the point, no fluff. The goal is to help developers reflect on their coding practices in a lighthearted and humorous way.
 
-### Funcionalidades
+## Features
 
-- **Análise de Código** - Cole seu código e receba uma avaliação
-- **Modo Sarcaso** - Ative o modo roast para feedback ainda mais humorous
-- **Shame Leaderboard** - Veja os piores códigos enviados, ranqueados por vergonha
-- **Estatísticas Globais** - Acompanhe quantos códigos já foram analizados e a média de notas
+- **Code Analysis** - Paste your code and receive an evaluation
+- **Roast Mode** - Enable sarcasm mode for even more humorous feedback
+- **Shame Leaderboard** - View the worst submitted codes, ranked by shame
+- **Global Statistics** - Track how many codes have been analyzed and the average score
 
-## Como usar
+## Getting Started
 
-1. Acesse o app
-2. Cole seu código na área de entrada
-3. (Opcional) Ative o modo roast para sarcasm mode
-4. Clique em "roast_my_code"
-5. Receba sua nota e veja no leaderboard
+### Prerequisites
 
-## Feito com
+- Node.js 18+
+- pnpm (or npm/yarn/bun)
 
-Este projeto foi desenvolvido durante o **NLW (Next Level Week)** da [Rocketseat](https://rocketseat.com.br), um dos maiores eventos de programação do Brasil.
+### Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+
+# Install dependencies
+pnpm install
+```
+
+### Running the development server
+
+```bash
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Building for production
+
+```bash
+pnpm build
+```
+
+## How to Use
+
+1. Open the app in your browser
+2. Paste your code in the input area
+3. (Optional) Enable roast mode for sarcasm mode
+4. Click "roast_my_code"
+5. Receive your score and view the leaderboard
+
+## Built With
+
+This project was built during **NLW (Next Level Week)** by [Rocketseat](https://rocketseat.com.br), one of the biggest programming events in Brazil.
 
 ---
 
-**Disclaimer**: DevRoast é uma ferramenta leve e divertida. O feedback gerado é automático e não substitui code reviews profissionais.
+**Disclaimer**: DevRoast is a lighthearted and fun tool. The feedback generated is automatic and does not replace professional code reviews.
