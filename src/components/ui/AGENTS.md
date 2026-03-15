@@ -153,6 +153,43 @@ import { cn } from "@/lib/utils";
 - **Organize classes in arrays** within base/variants for better readability
 - **Use canonical class names** - prefer `text-white` over `text-(--color-white)`, `bg-black` over `bg-(--color-black)`, etc.
 
+## Canonical Classes (Tailwind)
+
+**Sempre use classes canônicas do Tailwind** quando possível, ao invés de classes arbitrárias.
+
+```tsx
+// Bad
+className="max-w-[1440px]"
+className="px-[40px]"
+className="text-[32px]"
+className="leading-[18px]"
+className="h-[120px]"
+className="gap-[20px]"
+className="gap-1.5"
+
+// Good
+className="max-w-360"  // 1440/4 = 360
+className="px-10"      // 40/4 = 10
+className="text-8xl"   // 32px é 2rem = text-8xl (32px)
+className="leading-7"   // 18px ≈ 1.125rem ≈ leading-7
+className="h-30"       // 120/4 = 30
+className="gap-5"      // 20/4 = 5
+className="gap-1.5"    // Mantém para decimais
+```
+
+O ESLint vai mostrar o aviso `suggestCanonicalClasses` quando houver uma classe canônica disponível.
+
+## Cores do Projeto
+
+O projeto usa cores semânticas para texto:
+
+```tsx
+// Cores de texto (disponíveis em text-text-primary, text-text-secondary, text-text-tertiary)
+className="text-text-primary"   // #e5e5e5 - texto principal
+className="text-text-secondary" // #a3a3a3 - texto secundário
+className="text-text-tertiary"  // #737373 - texto terciário/muted
+```
+
 ## Scrollbar Styling
 
 Para elementos com scroll (overflow-auto, overflow-y-auto, etc.), use o estilo inline para personalizar a cor da scrollbar:
