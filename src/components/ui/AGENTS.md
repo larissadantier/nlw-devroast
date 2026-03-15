@@ -152,3 +152,16 @@ import { cn } from "@/lib/utils";
 - **Export component, variants, and types** for external usage
 - **Organize classes in arrays** within base/variants for better readability
 - **Use canonical class names** - prefer `text-white` over `text-(--color-white)`, `bg-black` over `bg-(--color-black)`, etc.
+
+## Scrollbar Styling
+
+Para elementos com scroll (overflow-auto, overflow-y-auto, etc.), use o estilo inline para personalizar a cor da scrollbar:
+
+```tsx
+//元素 com scroll
+style={{
+  scrollbarColor: '#10b981 transparent',
+}}
+```
+
+Isso usa a cor accent-green (`#10b981`) para o thumb da scrollbar com fundo transparente.

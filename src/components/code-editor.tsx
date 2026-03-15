@@ -157,6 +157,9 @@ function CodeEditor({ value, onChange, language, onLanguageChange, className }: 
               "relative z-10 w-full h-full py-4 px-4 bg-transparent font-mono text-xs leading-[1.625] outline-none resize-none min-h-80 whitespace-pre overflow-auto [tab-size:2]",
               hasHighlight ? "text-transparent caret-accent-green selection:bg-white/10" : "text-text-primary placeholder:text-text-tertiary caret-accent-green",
             )}
+            style={{
+              scrollbarColor: '#10b981 transparent',
+            }}
           />
         </div>
       </div>
