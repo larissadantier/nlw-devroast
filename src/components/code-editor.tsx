@@ -92,15 +92,23 @@ function CodeEditor({ value, onChange, language, onLanguageChange, className }: 
             onChange={(e) => {
               onLanguageChange?.(e.target.value);
             }}
-            className="bg-transparent font-mono text-xs text-text-secondary outline-none cursor-pointer appearance-none hover:text-text-primary transition-colors pr-5"
+            className="bg-bg-surface font-mono text-xs text-text-secondary outline-none cursor-pointer appearance-none hover:text-text-primary transition-colors px-3 py-2 rounded-md border border-white/10 pr-10 min-w-[140px] scrollbar-thin"
+            style={{
+              paddingRight: '2.5rem',
+            }}
           >
             {LANGUAGE_OPTIONS_NO_AUTO.map((opt) => (
-              <option key={opt.value} value={opt.value} className="bg-bg-surface text-text-primary">
+              <option
+                key={opt.value}
+                value={opt.value}
+                className="bg-bg-surface text-text-primary"
+                style={{ padding: '6px 12px' }}
+              >
                 {opt.label}
               </option>
             ))}
           </select>
-          <ChevronDown className="absolute right-0 size-3.5 text-text-tertiary pointer-events-none" />
+          <ChevronDown className="absolute right-3 size-3.5 text-text-tertiary pointer-events-none" />
         </div>
       </div>
 

@@ -41,3 +41,59 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+/* Custom scrollbar for dropdowns */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-green) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--accent-green);
+  border-radius: 2px;
+}
+
+.scrollbar-thumb-accent-green::-webkit-scrollbar-thumb {
+  background-color: var(--accent-green);
+  width: 4px;
+  border-radius: 2px;
+}
+
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Select dropdown scrollbar styling */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select option {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-green) transparent;
+  padding: 8px 12px;
+}
+
+select::-webkit-scrollbar {
+  width: 4px;
+}
+
+select::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+select::-webkit-scrollbar-thumb {
+  background-color: var(--accent-green);
+  width: 4px;
+  border-radius: 2px;
+}
