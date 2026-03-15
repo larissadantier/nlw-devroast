@@ -1,4 +1,4 @@
-import { highlightCode } from "@/lib/shiki";
+import { CodeBlock } from "@/components/ui/code-block";
 
 const leaderboardData = [
   {
@@ -42,27 +42,6 @@ function getScoreColor(score: number): string {
   if (score <= 3) return "text-accent-red";
   if (score <= 6) return "text-accent-amber";
   return "text-accent-green";
-}
-
-async function CodeContent({ code, language }: { code: string; language: string }) {
-  const highlightedCode = await highlightCode(code, language);
-
-  return (
-    <div className="flex h-30 bg-bg-input" style={{ scrollbarColor: '#10b981 transparent' }}>
-      <div className="w-10 flex flex-col items-end gap-1.5 px-2.5 py-3 border-r border-border-primary bg-bg-surface">
-        {code.split("\n").map((_, i) => (
-          <span key={i} className="font-mono text-xs text-text-tertiary leading-7">
-            {i + 1}
-          </span>
-        ))}
-      </div>
-      <div
-        className="flex-1 p-4 gap-1.5 overflow-auto"
-        style={{ scrollbarColor: '#10b981 transparent' }}
-        dangerouslySetInnerHTML={{ __html: highlightedCode }}
-      />
-    </div>
-  );
 }
 
 export default async function LeaderboardPage() {
@@ -110,7 +89,7 @@ export default async function LeaderboardPage() {
                   </span>
                 </div>
               </div>
-              <CodeContent code={entry.code} language={entry.language} />
+              <CodeBlock code={entry.code} language={entry.language} showHeader={false} className="border-0 rounded-none" />
             </div>
           ))}
         </section>

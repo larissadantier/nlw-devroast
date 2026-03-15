@@ -9,6 +9,7 @@ interface CodeBlockProps {
   code: string;
   language?: string;
   onLanguageChange?: (language: string) => void;
+  showHeader?: boolean;
   className?: string;
 }
 
@@ -59,7 +60,7 @@ async function Content({ language = "typescript", code }: { language?: string; c
   );
 }
 
-export function CodeBlock({ code, language: initialLanguage, onLanguageChange, className }: CodeBlockProps) {
+export function CodeBlock({ code, language: initialLanguage, onLanguageChange, showHeader = true, className }: CodeBlockProps) {
   const detectedLanguage = useMemo(() => {
     if (!initialLanguage && code) {
       return detectLanguage(code);
@@ -80,7 +81,7 @@ export function CodeBlock({ code, language: initialLanguage, onLanguageChange, c
 
   return (
     <Root className={className}>
-      <Header language={language} onLanguageChange={handleLanguageChange} />
+      {showHeader && <Header language={language} onLanguageChange={handleLanguageChange} />}
       <Content language={language} code={code} />
     </Root>
   );
