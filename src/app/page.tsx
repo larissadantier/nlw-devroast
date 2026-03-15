@@ -1,5 +1,8 @@
+"use client";
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { CodeBlock } from "@/components/ui/code-block";
+import { CodeEditor } from "@/components/code-editor";
 import { Toggle } from "@/components/ui/toggle";
 
 const EXAMPLE_CODE = `function calculateTotal(items) {
@@ -47,6 +50,9 @@ function scoreColor(score: number): string {
 }
 
 export default function Home() {
+  const [code, setCode] = useState(EXAMPLE_CODE);
+  const [language, setLanguage] = useState<string | undefined>(undefined);
+
   return (
     <main className="flex flex-col items-center w-full">
       <div className="w-full max-w-240 flex flex-col gap-12 px-10 pt-20 pb-10">
@@ -58,9 +64,7 @@ export default function Home() {
           <p className="text-center font-mono text-sm text-zinc-500 dark:text-zinc-400">{`// drop your code below and we'll rate it — brutally honest or full roast mode`}</p>
         </div>
 
-        <CodeBlock.Root>
-          <CodeBlock.Content language="javascript">{EXAMPLE_CODE}</CodeBlock.Content>
-        </CodeBlock.Root>
+        <CodeEditor value={code} onChange={setCode} language={language} onLanguageChange={setLanguage} />
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
