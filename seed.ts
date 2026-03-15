@@ -19,6 +19,7 @@ const LANGUAGES = [
   "sql",
 ] as const
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const VERDICTS = [
   "needs_serious_help",
   "rough_around_edges",
@@ -27,6 +28,7 @@ const VERDICTS = [
   "exceptional",
 ] as const
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const SEVERITIES = ["critical", "warning", "good"] as const
 
 const ROAST_QUOTES = [

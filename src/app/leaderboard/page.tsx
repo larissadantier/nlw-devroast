@@ -71,8 +71,8 @@ export default async function LeaderboardPage() {
       <div className="w-full max-w-360 flex flex-col gap-10 px-20 pt-10 pb-10">
         <section className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
-            <span className="font-mono text-8xl font-bold text-accent-green">&gt;</span>
-            <h1 className="font-mono text-7xl font-bold text-text-primary">
+            <span className="font-mono text-[32px] font-bold text-accent-green">&gt;</span>
+            <h1 className="font-mono text-[28px] font-bold text-text-primary">
               shame_leaderboard
             </h1>
           </div>

@@ -29,10 +29,8 @@ export function useLanguageDetection(code: string): UseLanguageDetectionReturn {
     }
 
     if (!code || code.trim().length === 0) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setDetectedLanguage(null);
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setConfidence(0);
+      setDetectedLanguage(null); // eslint-disable-line react-hooks/set-state-in-effect
+      setConfidence(0);  
       return;
     }
 
@@ -49,19 +47,14 @@ export function useLanguageDetection(code: string): UseLanguageDetectionReturn {
 
       if (result.language && result.relevance >= RELEVANCE_THRESHOLD) {
         const normalizedLang = normalizeLanguage(result.language);
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setDetectedLanguage(normalizedLang);
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setConfidence(Math.min(result.relevance / 10, 1));
+        setDetectedLanguage(normalizedLang);  
+        setConfidence(Math.min(result.relevance / 10, 1));  
       } else {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setDetectedLanguage(null);
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setConfidence(0);
+        setDetectedLanguage(null);  
+        setConfidence(0);  
       }
 
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setIsDetecting(false);
+      setIsDetecting(false);  
     }, 50);
 
     return () => {

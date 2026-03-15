@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useLanguageDetection } from "@/hooks/use-language-detection";
 import { useShikiHighlighter } from "@/hooks/use-shiki-highlighter";
-import { LANGUAGE_OPTIONS, LANGUAGES, type LanguageKey } from "@/lib/languages";
+import { LANGUAGE_OPTIONS } from "@/lib/languages";
 
 const MAX_CHARACTERS = 2000;
 const LANGUAGE_OPTIONS_NO_AUTO = LANGUAGE_OPTIONS.filter((opt) => opt.value !== "auto");
@@ -26,7 +26,6 @@ function CodeEditor({ value, onChange, language, onLanguageChange, className }: 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const effectiveLanguage = language ?? detectedLanguage ?? "javascript";
-  const displayLanguage = LANGUAGES[effectiveLanguage as LanguageKey]?.name ?? effectiveLanguage;
 
   const charCount = value.length;
   const isOverLimit = charCount > MAX_CHARACTERS;
