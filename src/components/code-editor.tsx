@@ -93,16 +93,11 @@ function CodeEditor({ value, onChange, language, onLanguageChange, className }: 
             }}
             className="bg-bg-surface font-mono text-xs text-text-secondary outline-none cursor-pointer appearance-none hover:text-text-primary transition-colors px-3 py-2 rounded-md border border-white/10 pr-10 min-w-[140px] scrollbar-thin"
             style={{
-              paddingRight: '2.5rem',
+              paddingRight: "2.5rem",
             }}
           >
             {LANGUAGE_OPTIONS_NO_AUTO.map((opt) => (
-              <option
-                key={opt.value}
-                value={opt.value}
-                className="bg-bg-surface text-text-primary"
-                style={{ padding: '6px 12px' }}
-              >
+              <option key={opt.value} value={opt.value} className="bg-bg-surface text-text-primary" style={{ padding: "6px 12px" }}>
                 {opt.label}
               </option>
             ))}
@@ -157,7 +152,7 @@ function CodeEditor({ value, onChange, language, onLanguageChange, className }: 
               hasHighlight ? "text-transparent caret-accent-green selection:bg-white/10" : "text-text-primary placeholder:text-text-tertiary caret-accent-green",
             )}
             style={{
-              scrollbarColor: '#10b981 transparent',
+              scrollbarColor: "#10b981 transparent",
             }}
           />
         </div>
