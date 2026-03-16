@@ -4,23 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CodeEditor } from "@/components/code-editor";
 import { Toggle } from "@/components/ui/toggle";
-
-const EXAMPLE_CODE = `function calculateTotal(items) {
-  var total = 0;
-  for (var i = 0; i < items.length; i++) {
-    total = total + items[i].price;
-  }
-
-  if (total > 100) {
-    console.log("discount applied");
-    total = total * 0.9;
-  }
-
-  // TODO: handle tax calculation
-  // TODO: handle currency conversion
-
-  return total;
-}`;
+import { StatsMetrics } from "@/components/stats-metrics";
 
 const leaderboardEntries = [
   {
@@ -49,8 +33,8 @@ function scoreColor(score: number): string {
   return "text-accent-green";
 }
 
-export default function Home() {
-  const [code, setCode] = useState(EXAMPLE_CODE);
+export default function HomePage() {
+  const [code, setCode] = useState("");
   const [language, setLanguage] = useState<string | undefined>(undefined);
 
   return (
@@ -64,7 +48,7 @@ export default function Home() {
           <p className="text-center font-mono text-sm text-zinc-500 dark:text-zinc-400">{`// drop your code below and we'll rate it — brutally honest or full roast mode`}</p>
         </div>
 
-        <CodeEditor value={code} onChange={setCode} language={language} onLanguageChange={setLanguage} />
+        <CodeEditor value={code ?? ""} onChange={setCode} language={language} onLanguageChange={setLanguage} />
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -77,11 +61,7 @@ export default function Home() {
           </Button>
         </div>
 
-        <div className="flex items-center justify-center gap-6">
-          <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">2,847 codes roasted</span>
-          <span className="text-zinc-500 dark:text-zinc-400">·</span>
-          <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">avg score: 4.2/10</span>
-        </div>
+        <StatsMetrics />
 
         <div className="flex flex-col gap-12">
           <div className="flex items-center justify-between">

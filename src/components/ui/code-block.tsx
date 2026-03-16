@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { highlightCode } from "@/lib/shiki";
 import { detectLanguage, LANGUAGE_OPTIONS } from "@/lib/language-detect";
 import { cn } from "@/lib/utils";
@@ -11,6 +11,7 @@ interface CodeBlockProps {
   onLanguageChange?: (language: string) => void;
   showHeader?: boolean;
   className?: string;
+  maxHeight?: string;
 }
 
 function Root({ className, children }: { className?: string; children: React.ReactNode }) {
@@ -42,25 +43,50 @@ function Header({ filename, language, onLanguageChange }: { filename?: string; l
   );
 }
 
-async function Content({ language = "typescript", code }: { language?: string; code: string }) {
-  const highlightedCode = await highlightCode(code, language);
+function Content({ language = "typescript", code, maxHeight }: { language?: string; code: string; maxHeight?: string }) {
+  const [highlightedCode, setHighlightedCode] = useState("");
   const lines = code.split("\n");
+  const codeRef = useRef<HTMLDivElement>(null);
+  const lineNumbersRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    highlightCode(code, language).then(setHighlightedCode);
+  }, [code, language]);
+
+  const handleScroll = () => {
+    if (codeRef.current && lineNumbersRef.current) {
+      lineNumbersRef.current.scrollTop = codeRef.current.scrollTop;
+    }
+  };
 
   return (
-    <div className="flex bg-bg-input">
-      <div className="flex flex-col items-end pr-3 pl-3 py-3 min-w-10 border-r border-border-primary bg-bg-surface">
+    <div 
+      className="flex bg-bg-input"
+      style={maxHeight ? { maxHeight, overflow: "hidden" } : undefined}
+    >
+      <div 
+        ref={lineNumbersRef}
+        className="flex flex-col items-end pr-3 pl-3 py-3 min-w-10 border-r border-border-primary bg-bg-surface"
+        style={maxHeight ? { overflowY: "hidden", maxHeight: `calc(${maxHeight} - 20px)`, scrollbarColor: "#10b981 transparent" } : { scrollbarColor: "#10b981 transparent" }}
+      >
         {Array.from({ length: lines.length }, (_, i) => (
           <span key={i} className="font-mono text-xs text-zinc-500 leading-6">
             {i + 1}
           </span>
         ))}
       </div>
-      <div className="flex-1 p-3 overflow-x-auto" dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+      <div 
+        ref={codeRef}
+        className="flex-1 p-3"
+        style={maxHeight ? { overflowY: "auto", maxHeight: `calc(${maxHeight} - 20px)`, scrollbarColor: "#10b981 transparent" } : { scrollbarColor: "#10b981 transparent" }}
+        onScroll={handleScroll}
+        dangerouslySetInnerHTML={{ __html: highlightedCode }} 
+      />
     </div>
   );
 }
 
-export function CodeBlock({ code, language: initialLanguage, onLanguageChange, showHeader = true, className }: CodeBlockProps) {
+export function CodeBlock({ code, language: initialLanguage, onLanguageChange, showHeader = true, className, maxHeight }: CodeBlockProps) {
   const detectedLanguage = useMemo(() => {
     if (!initialLanguage && code) {
       return detectLanguage(code);
@@ -79,10 +105,14 @@ export function CodeBlock({ code, language: initialLanguage, onLanguageChange, s
     }
   };
 
+  const heightMatch = className?.match(/h-\[(\d+)px\]/);
+  const extractedMaxHeight = heightMatch ? `${heightMatch[1]}px` : undefined;
+  const effectiveMaxHeight = maxHeight || extractedMaxHeight;
+
   return (
     <Root className={className}>
       {showHeader && <Header language={language} onLanguageChange={handleLanguageChange} />}
-      <Content language={language} code={code} />
+      <Content language={language} code={code} maxHeight={effectiveMaxHeight} />
     </Root>
   );
 }

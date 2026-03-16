@@ -15,6 +15,10 @@
   --text-primary: #e5e5e5;
   --text-secondary: #a3a3a3;
   --text-tertiary: #737373;
+  --diff-removed-bg: #EF444415;
+  --diff-removed-text: #EF4444;
+  --diff-added-bg: #10B98115;
+  --diff-added-text: #10B981;
 }
 
 @theme inline {
@@ -32,6 +36,10 @@
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
+  --color-diff-removed-bg: var(--diff-removed-bg);
+  --color-diff-removed-text: var(--diff-removed-text);
+  --color-diff-added-bg: var(--diff-added-bg);
+  --color-diff-added-text: var(--diff-added-text);
   --font-sans: ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
