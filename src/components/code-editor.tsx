@@ -114,7 +114,7 @@ function CodeEditor({ value, onChange, language, onLanguageChange, className }: 
             <span
               // biome-ignore lint/suspicious/noArrayIndexKey: line numbers are index-based and never reorder
               key={i}
-              className="font-mono text-xs leading-[1.625] text-text-tertiary"
+              className="font-mono text-xs leading-relaxed text-text-tertiary"
             >
               {i + 1}
             </span>
@@ -128,15 +128,15 @@ function CodeEditor({ value, onChange, language, onLanguageChange, className }: 
             <div
               ref={highlightedRef}
               aria-hidden="true"
-              className="absolute inset-0 py-4 px-4 font-mono text-xs leading-[1.625] overflow-hidden whitespace-pre pointer-events-none [tab-size:2] [&_pre]:!bg-transparent [&_pre]:!m-0 [&_pre]:!p-0 [&_code]:!bg-transparent [&_.line]:leading-[1.625]"
-              // biome-ignore lint/security/noDangerouslySetInnerHtml: shiki generates trusted HTML from code strings
+              className="absolute inset-0 py-4 px-4 font-mono text-xs leading-relaxed
+              overflow-hidden whitespace-pre pointer-events-none [tab-size:2] [&_pre]:bg-transparent!
+              [&_pre]:m-0 [&_pre]:p-0! [&_code]:bg-transparent! [&_.line]:leading-relaxed"
               dangerouslySetInnerHTML={{
                 __html: highlightedHtml,
               }}
             />
           )}
 
-          {/* Textarea (above, transparent text when highlight is active) */}
           <textarea
             ref={textareaRef}
             value={value}
@@ -148,12 +148,9 @@ function CodeEditor({ value, onChange, language, onLanguageChange, className }: 
             autoComplete="off"
             autoCorrect="off"
             className={twMerge(
-              "relative z-10 w-full h-full py-4 px-4 bg-transparent font-mono text-xs leading-[1.625] outline-none resize-none min-h-80 whitespace-pre overflow-auto [tab-size:2]",
+              "relative z-10 w-full h-full py-4 px-4 bg-transparent font-mono text-xs leading-relaxed outline-none resize-none min-h-80 whitespace-pre overflow-auto [tab-size:2]",
               hasHighlight ? "text-transparent caret-accent-green selection:bg-white/10" : "text-text-primary placeholder:text-text-tertiary caret-accent-green",
             )}
-            style={{
-              scrollbarColor: "#10b981 transparent",
-            }}
           />
         </div>
       </div>

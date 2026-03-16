@@ -56,7 +56,7 @@ export default function HomePage() {
             <span className="font-mono text-sm text-accent-green">roast mode</span>
             <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">{`// maximum sarcasm enabled`}</span>
           </div>
-          <Button radius="none">
+          <Button disabled={!code.trim()} radius="none">
             <span>$</span> roast_my_code
           </Button>
         </div>
